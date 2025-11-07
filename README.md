@@ -10,6 +10,7 @@
 - `Patrocinadores`:  Adiciona, Lista, Atualiza e exclui são as principais funções.
 - `Cadastro`: Times: Cria times, salva informações como resultados e jogadoras, atualizar dados do time.
 Jogadora: Salva dados das jogadoras, atualizar ou excluir dados de uma jogadora específica.
+- `Time Campeão`: Monta tabela de classificação do campeonato e define o campeão.
 
 
 ## 👥 Equipe desenvolvedora
