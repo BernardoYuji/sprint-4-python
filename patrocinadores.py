@@ -61,7 +61,7 @@ def atualizar_patrocinadores(patrocinadores):
         print("⚠️ Digite um número válido.\n")
 
 # Exclui Patrocinador da lista
-def excluir_arbitra(patrocinadores):
+def excluir_patrocinadores(patrocinadores):
     listar_patrocinadores(patrocinadores)
     try:
         indice = int(input("Digite o número da Patrocinador que deseja excluir: ")) - 1
@@ -95,7 +95,7 @@ def menu():
         elif opcao == "3":
             atualizar_patrocinadores(patrocinadores)
         elif opcao == "4":
-            excluir_arbitra(patrocinadores)
+            excluir_patrocinadores(patrocinadores)
         elif opcao == "5":
             print("👋 Saindo do sistema... Até logo!")
             break
