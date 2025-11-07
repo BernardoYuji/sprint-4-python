@@ -3,7 +3,6 @@
 # Principais funções são de receber o nome das organizadoras e anunciar
 
 
-
 # Função que retorna a lista de organizadoras
 def receber_organizadoras():
     return ["Passa a Bola"]  # única organizadora

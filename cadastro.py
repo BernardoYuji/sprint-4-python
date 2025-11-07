@@ -11,11 +11,11 @@ import os
 # Interface para usuário utilizar
 
 
-# --- Arquivos JSON para persistência ---
+# Carrega os arquivos JSON
 ARQUIVO_TIMES = "times.json"
 ARQUIVO_JOGADORAS = "jogadoras.json"
 
-# --- Funções de persistência ---
+# Arquivo JSOn
 def carregar_dados(arquivo):
     if os.path.exists(arquivo):
         try:
@@ -26,16 +26,18 @@ def carregar_dados(arquivo):
             return {}
     return {}
 
+# Salva a lista de árbitras no JSON
 def salvar_dados(arquivo, dados):
     with open(arquivo, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=4)
 
-# --- Carregar dados existentes ---
+# Carrega dados JSON ja existentes
 times = carregar_dados(ARQUIVO_TIMES)
 estatisticas_jogadoras = carregar_dados(ARQUIVO_JOGADORAS)
 
 # --- Funções CRUD ---
 
+# Função que cria times, recebe dados como jogadoras, jogos, vitorias, empates, derrotas e pontos
 def criar_time(time):
     """Garante que o time exista"""
     if time not in times:
@@ -50,6 +52,7 @@ def criar_time(time):
         salvar_dados(ARQUIVO_TIMES, times)
     return times[time]
 
+# Função que faz o cadastro de jogadoras, recebe dados como nome, time, posição
 def cadastrar_jogadora():
     nome = input("Nome da jogadora: ").strip()
     time = input("Time: ").strip()
@@ -81,6 +84,7 @@ def cadastrar_jogadora():
             return
     print("⚠️ Todas as posições já estão preenchidas nesse time.")
 
+# Função que lista as jogadoras
 def listar_jogadoras():
     if not estatisticas_jogadoras:
         print("Nenhuma jogadora cadastrada.")
@@ -91,6 +95,7 @@ def listar_jogadoras():
               f"Gols: {stats['gols']}, Assistências: {stats['assistencias']}, "
               f"Amarelos: {stats['cartoes_amarelo']}, Vermelhos: {stats['cartoes_vermelho']}")
 
+# Função que altera características ja criadas
 def atualizar_estatisticas():
     nome = input("Nome da jogadora que deseja atualizar: ").strip()
     if nome not in estatisticas_jogadoras:
@@ -108,6 +113,7 @@ def atualizar_estatisticas():
     except ValueError:
         print("⚠️ Entrada inválida, tente novamente.")
 
+# Função que exclui jogadora de time
 def excluir_jogadora():
     nome = input("Nome da jogadora que deseja excluir: ").strip()
     if nome not in estatisticas_jogadoras:
@@ -125,6 +131,7 @@ def excluir_jogadora():
     salvar_dados(ARQUIVO_JOGADORAS, estatisticas_jogadoras)
     print(f"✅ Jogadora {nome} removida com sucesso.")
 
+# Função que registra resultado das partidas
 def registrar_resultado():
     time = input("Time: ").strip()
     if time not in times:
@@ -151,6 +158,7 @@ def registrar_resultado():
     salvar_dados(ARQUIVO_TIMES, times)
     print(f"✅ Resultado registrado para o time {time}.")
 
+# Função que faz um lista das 5 jogadoras com mais gols no campeonato
 def mostrar_top_gols():
     if not estatisticas_jogadoras:
         print("Nenhuma jogadora cadastrada.")
@@ -160,7 +168,7 @@ def mostrar_top_gols():
     for i, (nome, stats) in enumerate(top, 1):
         print(f"{i}. {nome} - {stats['gols']} gols")
 
-# --- Função para editar times ---
+# Função para editar times 
 def editar_time():
     time = input("Nome do time que deseja editar: ").strip()
     if time not in times:
@@ -212,7 +220,7 @@ def editar_time():
     else:
         print("⚠️ Opção inválida.")
 
-# --- Atualizar menu ---
+# Menu interativo para o consumidor final
 def menu():
     while True:
         print("\n=== Gerenciamento de Jogadoras e Times ===")
@@ -245,6 +253,6 @@ def menu():
         else:
             print("⚠️ Opção inválida, tente novamente.")
 
-# --- Rodar menu ---
+# Execução do programa
 if __name__ == "__main__":
     menu()
