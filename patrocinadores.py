@@ -42,7 +42,7 @@ def listar_patrocinadores(patrocinadores):
         print()
 
 # Atualiza o nome da Patrocinador baseado no número da posição no JSON
-def atualizar_arbitra(patrocinadores):
+def atualizar_patrocinadores(patrocinadores):
     listar_patrocinadores(patrocinadores)
     try:
         indice = int(input("Digite o número da Patrocinador que deseja atualizar: ")) - 1
@@ -93,7 +93,7 @@ def menu():
         elif opcao == "2":
             adicionar_patrocinadores(patrocinadores)
         elif opcao == "3":
-            atualizar_arbitra(patrocinadores)
+            atualizar_patrocinadores(patrocinadores)
         elif opcao == "4":
             excluir_arbitra(patrocinadores)
         elif opcao == "5":
